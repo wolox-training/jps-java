@@ -27,13 +27,26 @@ public class Book {
     @Column(nullable = false)
     private String title;
     @Column(nullable = false)
+
     private String Subtitle;
     @Column(nullable = false)
+    /**
+     * this is the name publisher of book
+     */
     private String Publisher;
     @Column(nullable = false)
+
+    /**
+     * this is the year of publication of book
+     */
     private String Year;
     @Column(nullable = false)
+
     private int Pages;
     @Column(nullable = false)
+
+    /**
+     * this is the unique number of a book
+     */
     private String isbn;
 }

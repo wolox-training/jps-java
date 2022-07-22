@@ -26,24 +26,42 @@ public class BookController {
     private final String ID_NOT_FOUND = "Book not found";
     private final BookRepository repository;
 
+    /**
+     * this method create a greeting with a name or for default is world
+     * @param name : Name of the sender (String)
+     *
+    */
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name",required = false,defaultValue = "World") String name, Model model){
         model.addAttribute("name",name);
         return "greeting";
     }
 
+
+    /**
+     * this method find all books
+     */
     @GetMapping
     public Iterable findAll() {
         return repository.findAll();
     }
 
 
+    /**
+     * this method save the book
+     * @param book = object of type(Book)
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book create(@RequestBody Book book) {
         return repository.save(book);
     }
 
+
+    /**
+     * this method delete the book by id
+     * @param id = id for delete the book
+     */
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         repository.findById(id)
@@ -51,6 +69,12 @@ public class BookController {
         repository.deleteById(id);
     }
 
+
+    /**
+     * this method updated the book by id
+     * @param bookNew = object of type Book
+     * @param id = id for update the book (must be equals to Book.id)
+     */
     @PutMapping("/{id}")
     public Book updateBook(@RequestBody Book bookNew, @PathVariable Long id) {
         if(bookNew.getId() != id) {
