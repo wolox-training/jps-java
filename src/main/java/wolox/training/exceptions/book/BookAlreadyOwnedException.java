@@ -1,4 +1,4 @@
-package wolox.training.exceptions;
+package wolox.training.exceptions.book;
 
 
 import lombok.NoArgsConstructor;

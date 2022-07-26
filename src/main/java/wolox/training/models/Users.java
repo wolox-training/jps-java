@@ -4,7 +4,7 @@ package wolox.training.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import wolox.training.exceptions.BookAlreadyOwnedException;
+import wolox.training.exceptions.book.BookAlreadyOwnedException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
