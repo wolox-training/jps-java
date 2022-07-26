@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
@@ -49,4 +51,12 @@ public class Book {
      * this is the unique number of a book
      */
     private String isbn;
+
+
+    /**
+     * this is the relationship with User model
+     */
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    private Users user;
 }
