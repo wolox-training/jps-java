@@ -65,7 +65,7 @@ public class BookController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         repository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException(ID_NOT_FOUND) );
+                .orElseThrow(() -> new BookNotFoundException() );
         repository.deleteById(id);
     }
 
@@ -78,10 +78,10 @@ public class BookController {
     @PutMapping("/{id}")
     public Book updateBook(@RequestBody Book bookNew, @PathVariable Long id) {
         if(bookNew.getId() != id) {
-            throw new BookIdMismatchException("id is different to id in the object Book");
+            throw new BookIdMismatchException();
         }
         repository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException(ID_NOT_FOUND) );
+                .orElseThrow(() -> new BookNotFoundException() );
         return repository.save(bookNew);
     }
 
