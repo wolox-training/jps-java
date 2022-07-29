@@ -56,7 +56,7 @@ public class Users {
         if (!books.contains(book)){
             return books.add(book);
         }else {
-            throw new BookAlreadyOwnedException("you have already this book ");
+            throw new BookAlreadyOwnedException();
         }
     }
 
@@ -68,7 +68,7 @@ public class Users {
         if (!books.contains(idBook)) {
             return books.remove(idBook);
         }else {
-            throw new BookAlreadyOwnedException("you dont have this book ");
+            throw new BookAlreadyOwnedException();
         }
     }
 }
