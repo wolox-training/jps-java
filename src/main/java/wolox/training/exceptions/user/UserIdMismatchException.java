@@ -1,4 +1,4 @@
-package wolox.training.exceptions;
+package wolox.training.exceptions.user;
 
 
 import lombok.NoArgsConstructor;
@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "id is different to id of the object")
 @NoArgsConstructor
-public class BookIdMismatchException extends RuntimeException{
+public class UserIdMismatchException extends RuntimeException{
 
 }

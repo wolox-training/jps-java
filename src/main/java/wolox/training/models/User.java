@@ -1,10 +1,12 @@
 package wolox.training.models;
 
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import wolox.training.exceptions.BookAlreadyOwnedException;
+import lombok.Setter;
+import wolox.training.exceptions.book.BookAlreadyOwnedException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,18 +14,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
+@Table(name = "users")
 @NoArgsConstructor
-public class Users {
+@AllArgsConstructor
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private long id;
 
     @Column(nullable = false)
