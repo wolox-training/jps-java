@@ -1,5 +1,6 @@
 package wolox.training.models;
 
+import com.google.common.base.Preconditions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AccessLevel;
@@ -36,21 +37,21 @@ public class Book {
     private String title;
     @Column(nullable = false)
 
-    private String Subtitle;
+    private String subtitle;
     @Column(nullable = false)
     /**
      * this is the name publisher of book
      */
-    private String Publisher;
+    private String publisher;
     @Column(nullable = false)
 
     /**
      * this is the year of publication of book
      */
-    private String Year;
+    private String year;
     @Column(nullable = false)
 
-    private int Pages;
+    private int pages;
     @Column(nullable = false)
 
     /**
@@ -65,4 +66,40 @@ public class Book {
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     private User user;
+
+    public void setGenre(String genre) {
+        this.genre =  Preconditions.checkNotNull(genre);
+    }
+
+    public void setImage(String image) {
+        this.image =  Preconditions.checkNotNull(image);
+    }
+
+    public void setTitle(String title) {
+        this.title =  Preconditions.checkNotNull(title);
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn =  Preconditions.checkNotNull(isbn);
+    }
+
+    public void setUser(User user) {
+        this.user =  Preconditions.checkNotNull(user);
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = Preconditions.checkNotNull(subtitle);
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = Preconditions.checkNotNull(publisher);
+    }
+
+    public void setYear(String year) {
+        this.year = Preconditions.checkNotNull(year);
+    }
+
+    public void setPages(int pages) {
+        this.pages = Preconditions.checkNotNull(pages);
+    }
 }

@@ -1,6 +1,7 @@
 package wolox.training.models;
 
 
+import com.google.common.base.Preconditions;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -53,6 +54,17 @@ public class User {
         return Collections.unmodifiableList(books);
     }
 
+    public void setUsername(String username) {
+        this.username = Preconditions.checkNotNull(username);
+    }
+
+    public void setName(String name) {
+        this.name = Preconditions.checkNotNull(name);
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = Preconditions.checkNotNull(birthDate);
+    }
 
     /**
      * this is the method for add a book in the collection
