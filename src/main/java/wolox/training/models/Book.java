@@ -1,5 +1,8 @@
 package wolox.training.models;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,12 +17,15 @@ import javax.persistence.ManyToOne;
 @Entity
 @Getter
 @Setter
+@ApiModel(description = "Books")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private Long id;
 
+    @ApiModelProperty(notes = "can be comedy,drama,etc..",example = "comedy")
     @Column(nullable = false)
     private String genre;
 
@@ -58,5 +64,5 @@ public class Book {
      */
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
-    private Users user;
+    private User user;
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import wolox.training.exceptions.user.UserIdMismatchException;
 import wolox.training.exceptions.user.UserNotFoundException;
 import wolox.training.models.Book;
-import wolox.training.models.Users;
+import wolox.training.models.User;
 import wolox.training.repositories.UserRepository;
 
 import java.util.List;
@@ -27,17 +27,24 @@ public class UserController {
 
 
     private final UserRepository userRepository;
-    private final Users user;
 
-
+    private User user;
 
 
     /**
      * this method find all User
      */
     @GetMapping
-    public List<Users> findAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    /**
+     * this method find by id User
+     */
+    @GetMapping("/{id}")
+    public User findById(@PathVariable Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException());
     }
 
 
@@ -47,7 +54,7 @@ public class UserController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Users create(@RequestBody Users users) {
+    public User create(@RequestBody User users) {
         return userRepository.save(users);
     }
 
@@ -70,7 +77,7 @@ public class UserController {
      * @param id = id for update the User (must be equals to User.id)
      */
     @PutMapping("/{id}")
-    public Users updateBook(@RequestBody Users users, @PathVariable Long id) {
+    public User updateBook(@RequestBody User users, @PathVariable Long id) {
         if(users.getId() != id) {
             throw new UserIdMismatchException();
         }
