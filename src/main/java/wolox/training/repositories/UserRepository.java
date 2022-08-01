@@ -7,5 +7,11 @@ import wolox.training.models.Users;
 @Repository
 public interface UserRepository extends JpaRepository<Users,Long> {
 
+
+    /**
+     * this method obtain a user by your name
+     * @param name : Name of user (String)
+     *
+     */
     Users getUsersByName(String name);
 }
